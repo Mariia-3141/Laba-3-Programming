@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./main.css"/>
+    <script type="javascript src="./main.js"/></script>
+	<style>
+	
+	body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(222, 206, 207);
+  }
+	.container{
+  background: black;
+  width: 300px;
+  margin: auto;
+   font-family: sans-serif;
+}
+
+.display{
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 70px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2.5rem;
+  color: #FFFFFF;
+}
+
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  flex:1 25%;
+  padding: 10px;
+  font-size: 2.0em;
+}
+
+.btn-number {
+  background-color:white;
+}
+
+.btn-operator {
+  background-color:#f0f8ff;
+}
+
+.btn-equals {
+  background-color: rgba(235, 169, 245);
+}
+
+.btn-clear {
+   background-color: rgba(235, 169, 245);
+}
+
+.header{
+text-align:center;
+}
+	</style>
+  </head>
+  
+  <body>
+  
+  <div class="header">
+  <h1>Calculator</h1>
+  <h2>Press a button to begin</h2>
+  </div>
+  
+<div class="container">
+  <div class="display"></div>
+  <div class="buttons">
+     <button class="btn-clear">AC</button>
+    <button class="btn-number" data-num="1">1</button>
+    <button class="btn-number" data-num="2">2</button>
+    <button class="btn-number" data-num="3">3</button>
+    <button class="btn-operator" data-num="+">+</button>
+    <button class="btn-number" data-num="4">4</button>
+    <button class="btn-number" data-num="5">5</button>
+    <button class="btn-number" data-num="6">6</button>
+    <button class="btn-operator" data-num="-">-</button>
+    <button class="btn-number" data-num="7">7</button>
+    <button class="btn-number" data-num="8">8</button>
+    <button class="btn-number" data-num="9">9</button>
+    <button class="btn-operator" data-num="*">X</button>
+    <button class="btn-operator" data-num="/">/</button>
+    <button class="btn-number" data-num="0">0</button>
+    <button class="btn-equals" data-num="=">=</button>
+  </div>
+</div>
+	<script>
+const buttons = document.querySelectorAll('.btn-number, .btn-operator')
+const clearButton = document.querySelector('.btn-clear')
+const equalsButton = document.querySelector('.btn-equals')
+const display = document.querySelector('.display')
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => { 
+    const buttonValue = button.getAttribute('data-num');  
+    display.textContent += buttonValue
+  })
+})
+
+equalsButton.addEventListener('click', () => { 
+  display.textContent = eval(display.textContent)
+})
+
+clearButton.addEventListener('click', () => { 
+  display.textContent = ""
+})
+	</script>
+  </body>
+</html>
